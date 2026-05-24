@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flix-Pro QR Business Cards</title>
+    <meta name="description" content="Printable QR business cards for Flix-Pro setup instructions.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="cards-page">
+    <header class="site-header">
+      <a class="brand" href="index.html#home" aria-label="Flix-Pro home">
+        <span class="brand-mark">FLIX</span>
+        <span class="brand-sub">PRO</span>
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#devices">Instructions</a>
+        <a href="cards.html">QR Cards</a>
+      </nav>
+    </header>
+
+    <main class="card-builder">
+      <p class="eyebrow">Printable helper</p>
+      <h1>QR business cards</h1>
+      <p>Paste your final GitHub Pages website URL below, update the cards, then print this page. Each QR code opens one device's instruction section.</p>
+
+      <div class="builder-controls">
+        <label class="sr-only" for="base-url">Website URL</label>
+        <input id="base-url" data-base-url type="url" value="https://your-user-name.github.io/flix-pro-setup" aria-label="Website URL">
+        <button type="button" data-update-cards>Update Cards</button>
+      </div>
+
+      <section class="print-sheet" data-print-sheet aria-label="Printable QR cards"></section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
