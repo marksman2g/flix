@@ -165,6 +165,77 @@ function wireExampleModal() {
   });
 }
 
+function boostChooseDeviceCta() {
+  const cta = document.querySelector(".attention-pulse");
+
+  if (!cta) {
+    return;
+  }
+
+  if (typeof cta.animate !== "function") {
+    let step = 0;
+    const frames = [
+      {
+        transform: "translateY(0) scale(1)",
+        boxShadow: "0 0 0 0 rgba(225, 124, 255, 0.62), 0 14px 30px rgba(184, 71, 217, 0.24)"
+      },
+      {
+        transform: "translateY(-8px) scale(1.14)",
+        boxShadow: "0 0 0 12px rgba(225, 124, 255, 0.13), 0 0 42px rgba(225, 124, 255, 0.9), 0 22px 46px rgba(184, 71, 217, 0.5)"
+      },
+      {
+        transform: "translateY(0) scale(1.04)",
+        boxShadow: "0 0 0 7px rgba(225, 124, 255, 0.1), 0 0 30px rgba(225, 124, 255, 0.72), 0 18px 38px rgba(184, 71, 217, 0.42)"
+      },
+      {
+        transform: "translateY(-2px) scale(1.07)",
+        boxShadow: "0 0 0 10px rgba(225, 124, 255, 0.12), 0 0 38px rgba(225, 124, 255, 0.84), 0 20px 42px rgba(184, 71, 217, 0.46)"
+      }
+    ];
+
+    window.setInterval(() => {
+      const frame = frames[step % frames.length];
+      cta.style.transform = frame.transform;
+      cta.style.boxShadow = frame.boxShadow;
+      step += 1;
+    }, 260);
+    return;
+  }
+
+  cta.animate(
+    [
+      {
+        transform: "translateY(0) scale(1)",
+        boxShadow: "0 0 0 0 rgba(225, 124, 255, 0.62), 0 14px 30px rgba(184, 71, 217, 0.24)"
+      },
+      {
+        transform: "translateY(-8px) scale(1.14)",
+        boxShadow: "0 0 0 12px rgba(225, 124, 255, 0.13), 0 0 42px rgba(225, 124, 255, 0.9), 0 22px 46px rgba(184, 71, 217, 0.5)",
+        offset: 0.24
+      },
+      {
+        transform: "translateY(0) scale(1.04)",
+        offset: 0.42
+      },
+      {
+        transform: "translateY(-2px) scale(1.07)",
+        boxShadow: "0 0 0 12px rgba(225, 124, 255, 0.13), 0 0 42px rgba(225, 124, 255, 0.9), 0 22px 46px rgba(184, 71, 217, 0.5)",
+        offset: 0.58
+      },
+      {
+        transform: "translateY(0) scale(1)",
+        boxShadow: "0 0 0 0 rgba(225, 124, 255, 0.62), 0 14px 30px rgba(184, 71, 217, 0.24)"
+      }
+    ],
+    {
+      duration: 1350,
+      easing: "ease-in-out",
+      iterations: Infinity
+    }
+  );
+}
+
 wireInstructionTabs();
 wireCardBuilder();
 wireExampleModal();
+boostChooseDeviceCta();
