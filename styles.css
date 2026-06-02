@@ -628,10 +628,10 @@ h3 {
   align-items: center;
   gap: 16px;
   margin-top: 28px;
-  border: 3px solid rgba(225, 124, 255, 0.78);
+  border: 0;
   border-radius: 8px;
-  padding: 20px;
-  background: rgba(184, 71, 217, 0.16);
+  padding: 23px;
+  background: transparent;
   box-shadow: 0 0 0 5px rgba(184, 71, 217, 0.18), 0 18px 38px rgba(184, 71, 217, 0.2);
   color: #fff;
   font-size: clamp(1.18rem, 2.4vw, 1.42rem);
@@ -642,30 +642,36 @@ h3 {
 .finish-box::before {
   content: "";
   position: absolute;
-  inset: -55%;
-  z-index: -2;
+  inset: 0;
+  z-index: 0;
   background: conic-gradient(
     from 0deg,
-    transparent 0deg,
-    transparent 72deg,
-    rgba(255, 255, 255, 0.92) 88deg,
-    var(--purple-3) 108deg,
-    transparent 138deg,
-    transparent 360deg
+    rgba(225, 124, 255, 0.32) 0deg,
+    rgba(225, 124, 255, 0.42) 42deg,
+    #ffffff 72deg,
+    var(--purple-3) 92deg,
+    rgba(225, 124, 255, 0.42) 124deg,
+    rgba(225, 124, 255, 0.24) 190deg,
+    rgba(225, 124, 255, 0.7) 242deg,
+    #ffffff 265deg,
+    rgba(225, 124, 255, 0.28) 292deg,
+    rgba(225, 124, 255, 0.32) 360deg
   );
-  animation: final-step-orbit 3.2s linear infinite;
+  animation: final-step-orbit 2.2s linear infinite;
 }
 
 .finish-box::after {
   content: "";
   position: absolute;
-  inset: 4px;
-  z-index: -1;
+  inset: 5px;
+  z-index: 1;
   border-radius: 5px;
   background: linear-gradient(180deg, rgba(65, 42, 93, 0.96), rgba(51, 38, 77, 0.96));
 }
 
 .finish-copy {
+  position: relative;
+  z-index: 2;
   min-width: 0;
 }
 
@@ -675,6 +681,8 @@ h3 {
 }
 
 .example-trigger {
+  position: relative;
+  z-index: 2;
   min-height: 42px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
