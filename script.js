@@ -128,5 +128,43 @@ function wireCardBuilder() {
   renderCards();
 }
 
+function wireExampleModal() {
+  const modal = document.querySelector("[data-example-modal]");
+  const openButtons = document.querySelectorAll("[data-example-open]");
+  const closeButton = document.querySelector("[data-example-close]");
+
+  if (!modal || !openButtons.length || !closeButton) {
+    return;
+  }
+
+  function openModal() {
+    if (typeof modal.showModal === "function") {
+      modal.showModal();
+    } else {
+      modal.setAttribute("open", "");
+    }
+  }
+
+  function closeModal() {
+    if (typeof modal.close === "function") {
+      modal.close();
+    } else {
+      modal.removeAttribute("open");
+    }
+  }
+
+  openButtons.forEach((button) => {
+    button.addEventListener("click", openModal);
+  });
+
+  closeButton.addEventListener("click", closeModal);
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+}
+
 wireInstructionTabs();
 wireCardBuilder();
+wireExampleModal();
