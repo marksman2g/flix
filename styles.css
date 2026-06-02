@@ -680,9 +680,63 @@ h3 {
   text-transform: uppercase;
 }
 
+.finish-lights {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.finish-lights span {
+  position: absolute;
+  display: block;
+  background: linear-gradient(90deg, transparent, #fff, var(--purple-3), transparent);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 18px rgba(225, 124, 255, 0.92));
+  opacity: 0;
+}
+
+.finish-lights span:nth-child(1) {
+  top: 0;
+  left: -38%;
+  width: 38%;
+  height: 6px;
+  animation: chase-top 1.25s linear infinite;
+}
+
+.finish-lights span:nth-child(2) {
+  top: -38%;
+  right: 0;
+  width: 6px;
+  height: 38%;
+  background: linear-gradient(180deg, transparent, #fff, var(--purple-3), transparent);
+  animation: chase-right 1.25s linear infinite;
+  animation-delay: 0.31s;
+}
+
+.finish-lights span:nth-child(3) {
+  right: -38%;
+  bottom: 0;
+  width: 38%;
+  height: 6px;
+  animation: chase-bottom 1.25s linear infinite;
+  animation-delay: 0.62s;
+}
+
+.finish-lights span:nth-child(4) {
+  bottom: -38%;
+  left: 0;
+  width: 6px;
+  height: 38%;
+  background: linear-gradient(180deg, transparent, #fff, var(--purple-3), transparent);
+  animation: chase-left 1.25s linear infinite;
+  animation-delay: 0.93s;
+}
+
 .example-trigger {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   min-height: 42px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
@@ -722,6 +776,74 @@ h3 {
   }
 }
 
+@keyframes chase-top {
+  0% {
+    left: -38%;
+    opacity: 0;
+  }
+
+  12%,
+  78% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes chase-right {
+  0% {
+    top: -38%;
+    opacity: 0;
+  }
+
+  12%,
+  78% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes chase-bottom {
+  0% {
+    right: -38%;
+    opacity: 0;
+  }
+
+  12%,
+  78% {
+    opacity: 1;
+  }
+
+  100% {
+    right: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes chase-left {
+  0% {
+    bottom: -38%;
+    opacity: 0;
+  }
+
+  12%,
+  78% {
+    opacity: 1;
+  }
+
+  100% {
+    bottom: 100%;
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .attention-pulse,
   .attention-pulse::after,
@@ -730,6 +852,7 @@ h3 {
   .stat-pop,
   .stats span::after,
   .finish-box,
+  .finish-lights span,
   .finish-box::before {
     animation: none;
   }
