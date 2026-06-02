@@ -27,7 +27,7 @@ Use these links for QR codes after replacing the domain with your real GitHub Pa
 
 - Firestick: `https://your-user-name.github.io/flix-pro-setup/#firestick`
 - Android Phone: `https://your-user-name.github.io/flix-pro-setup/#android-phone`
-- iPhone / iPad: `https://your-user-name.github.io/flix-pro-setup/#ios`
+- IPhone / iPad: `https://your-user-name.github.io/flix-pro-setup/#ios`
 - Android TV: `https://your-user-name.github.io/flix-pro-setup/#android-tv`
 - Roku TV: `https://your-user-name.github.io/flix-pro-setup/#roku-tv`
 

@@ -9,7 +9,7 @@ const devices = [
 const labels = {
   "firestick": "Firestick",
   "android-phone": "Android Phone",
-  "ios": "iPhone / iPad",
+  "ios": "IPhone / iPad",
   "android-tv": "Android TV",
   "roku-tv": "Roku TV"
 };
