@@ -166,6 +166,8 @@ h3 {
 }
 
 .stats span {
+  position: relative;
+  overflow: hidden;
   min-width: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -176,10 +178,86 @@ h3 {
   font-weight: 750;
 }
 
+.stats span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0%, rgba(225, 124, 255, 0.22) 48%, transparent 68%);
+  opacity: 0;
+  transform: translateX(-120%);
+  animation: stat-card-shine 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.stats span:nth-child(2)::after {
+  animation-delay: 0.35s;
+}
+
+.stats span:nth-child(3)::after {
+  animation-delay: 0.7s;
+}
+
 .stats strong {
   display: block;
   color: var(--text);
   font-size: 1.35rem;
+}
+
+.stat-pop {
+  width: fit-content;
+  color: #fff;
+  text-shadow: 0 0 14px rgba(225, 124, 255, 0.72);
+  animation: stat-number-pop 2.15s ease-in-out infinite;
+  transform-origin: left center;
+}
+
+.stats span:nth-child(2) .stat-pop {
+  animation-delay: 0.2s;
+}
+
+.stats span:nth-child(3) .stat-pop {
+  animation-delay: 0.4s;
+}
+
+@keyframes stat-number-pop {
+  0%,
+  100% {
+    transform: scale(1);
+    color: #fff;
+    text-shadow: 0 0 10px rgba(225, 124, 255, 0.48);
+  }
+
+  24% {
+    transform: scale(1.18);
+    color: var(--purple-3);
+    text-shadow: 0 0 18px rgba(225, 124, 255, 0.96), 0 0 34px rgba(184, 71, 217, 0.62);
+  }
+
+  42% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes stat-card-shine {
+  0%,
+  38% {
+    opacity: 0;
+    transform: translateX(-120%);
+  }
+
+  52% {
+    opacity: 1;
+  }
+
+  72% {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(120%);
+  }
 }
 
 .hero-actions {
@@ -558,6 +636,7 @@ h3 {
   color: #fff;
   font-size: clamp(1.18rem, 2.4vw, 1.42rem);
   font-weight: 900;
+  animation: finish-box-pulse 1.85s ease-in-out infinite;
 }
 
 .finish-box::before {
@@ -622,11 +701,27 @@ h3 {
   }
 }
 
+@keyframes finish-box-pulse {
+  0%,
+  100% {
+    border-color: rgba(225, 124, 255, 0.78);
+    box-shadow: 0 0 0 5px rgba(184, 71, 217, 0.18), 0 18px 38px rgba(184, 71, 217, 0.2);
+  }
+
+  50% {
+    border-color: #fff;
+    box-shadow: 0 0 0 8px rgba(225, 124, 255, 0.2), 0 0 34px rgba(225, 124, 255, 0.88), 0 18px 42px rgba(184, 71, 217, 0.38);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .attention-pulse,
   .attention-pulse::after,
   .button-spark::before,
   .button-badge,
+  .stat-pop,
+  .stats span::after,
+  .finish-box,
   .finish-box::before {
     animation: none;
   }
