@@ -512,6 +512,9 @@ h3 {
 }
 
 .device-tab {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -524,6 +527,59 @@ h3 {
   cursor: pointer;
   font: inherit;
   font-weight: 900;
+}
+
+.device-tab::before,
+.device-tab::after {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: 14px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.device-tab::before {
+  z-index: 0;
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(225, 124, 255, 0.95) 0deg 7deg,
+      transparent 7deg 17deg,
+      rgba(255, 255, 255, 0.72) 17deg 22deg,
+      transparent 22deg 34deg
+    );
+  filter: blur(1px) drop-shadow(0 0 18px rgba(225, 124, 255, 0.8));
+  transform: scale(0.68) rotate(0deg);
+}
+
+.device-tab::after {
+  z-index: 0;
+  border: 2px solid rgba(225, 124, 255, 0.86);
+  box-shadow: 0 0 26px rgba(225, 124, 255, 0.72);
+  transform: scale(0.88);
+}
+
+.device-tab:hover,
+.device-tab:focus-visible {
+  border-color: rgba(255, 255, 255, 0.66);
+  animation: device-hover-pop 0.82s ease-in-out infinite;
+  box-shadow: 0 0 0 4px rgba(225, 124, 255, 0.1), 0 0 34px rgba(225, 124, 255, 0.56);
+}
+
+.device-tab:hover::before,
+.device-tab:focus-visible::before {
+  animation: device-sunburst 0.82s ease-out infinite;
+}
+
+.device-tab:hover::after,
+.device-tab:focus-visible::after {
+  animation: device-shockwave 0.82s ease-out infinite;
+}
+
+.device-tab > * {
+  position: relative;
+  z-index: 2;
 }
 
 .device-name {
@@ -579,6 +635,53 @@ h3 {
 
   58% {
     transform: scale(1.08) rotate(3deg);
+  }
+}
+
+@keyframes device-hover-pop {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  38% {
+    transform: translateY(-3px) scale(1.06);
+  }
+
+  64% {
+    transform: translateY(0) scale(1.02);
+  }
+}
+
+@keyframes device-sunburst {
+  0% {
+    opacity: 0;
+    transform: scale(0.68) rotate(0deg);
+  }
+
+  20% {
+    opacity: 0.88;
+  }
+
+  72% {
+    opacity: 0.34;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.28) rotate(28deg);
+  }
+}
+
+@keyframes device-shockwave {
+  0% {
+    opacity: 0.84;
+    transform: scale(0.88);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.22);
   }
 }
 
@@ -907,6 +1010,12 @@ h3 {
   .button-badge,
   .stat-pop,
   .stats span::after,
+  .device-tab:hover,
+  .device-tab:focus-visible,
+  .device-tab:hover::before,
+  .device-tab:focus-visible::before,
+  .device-tab:hover::after,
+  .device-tab:focus-visible::after,
   .hot-letter,
   .finish-box,
   .finish-lights span,
