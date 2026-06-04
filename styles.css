@@ -560,21 +560,26 @@ h3 {
   transform: scale(0.88);
 }
 
-.device-tab:hover,
-.device-tab:focus-visible {
+.device-tab:active,
+.device-tab.is-clicking {
   border-color: rgba(255, 255, 255, 0.66);
-  animation: device-hover-pop 0.82s ease-in-out infinite;
+  animation: device-hover-pop 0.82s ease-in-out;
   box-shadow: 0 0 0 4px rgba(225, 124, 255, 0.1), 0 0 34px rgba(225, 124, 255, 0.56);
 }
 
-.device-tab:hover::before,
-.device-tab:focus-visible::before {
-  animation: device-sunburst 0.82s ease-out infinite;
+.device-tab:active::before,
+.device-tab.is-clicking::before {
+  animation: device-sunburst 0.82s ease-out;
 }
 
-.device-tab:hover::after,
-.device-tab:focus-visible::after {
-  animation: device-shockwave 0.82s ease-out infinite;
+.device-tab:active::after,
+.device-tab.is-clicking::after {
+  animation: device-shockwave 0.82s ease-out;
+}
+
+.device-tab:focus-visible {
+  outline: 2px solid rgba(225, 124, 255, 0.72);
+  outline-offset: 3px;
 }
 
 .device-tab > * {
@@ -1010,12 +1015,12 @@ h3 {
   .button-badge,
   .stat-pop,
   .stats span::after,
-  .device-tab:hover,
-  .device-tab:focus-visible,
-  .device-tab:hover::before,
-  .device-tab:focus-visible::before,
-  .device-tab:hover::after,
-  .device-tab:focus-visible::after,
+  .device-tab:active,
+  .device-tab.is-clicking,
+  .device-tab:active::before,
+  .device-tab.is-clicking::before,
+  .device-tab:active::after,
+  .device-tab.is-clicking::after,
   .hot-letter,
   .finish-box,
   .finish-lights span,

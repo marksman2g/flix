@@ -40,10 +40,20 @@ function setDevice(device, shouldFocus = false) {
   });
 }
 
+function triggerDeviceBurst(tab) {
+  tab.classList.remove("is-clicking");
+  void tab.offsetWidth;
+  tab.classList.add("is-clicking");
+  window.setTimeout(() => {
+    tab.classList.remove("is-clicking");
+  }, 850);
+}
+
 function wireInstructionTabs() {
   document.querySelectorAll("[data-device]").forEach((tab) => {
     tab.addEventListener("click", () => {
       const device = tab.dataset.device;
+      triggerDeviceBurst(tab);
       window.location.hash = device;
       setDevice(device, true);
     });
